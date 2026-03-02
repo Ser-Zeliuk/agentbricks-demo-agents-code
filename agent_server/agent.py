@@ -36,6 +36,11 @@ def init_mcp_client(workspace_client: WorkspaceClient) -> DatabricksMultiServerM
                 url=f"{host_name}/api/2.0/mcp/functions/agenbrick_demo/default",
                 workspace_client=workspace_client,
             ),
+            DatabricksMCPServer.from_vector_search(catalog="demo_location", # <- your UC catalog 
+                                                   schema="demo", # <- your UC schema 
+                                                #    index_name="combined_text_data_index", # <- your vector search index name 
+                                                   name="docs-search", workspace_client=workspace_client),
+            
         ]
     )
 
